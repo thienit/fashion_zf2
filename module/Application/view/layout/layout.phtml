@@ -1,55 +1,236 @@
-<?php echo $this->doctype(); ?>
+﻿<?php echo $this->doctype(); ?>
 
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <?php echo $this->headTitle('ZF2 '. $this->translate('Skeleton Application'))->setSeparator(' - ')->setAutoEscape(false) ?>
+<head>
+	<meta charset="utf-8">
+	<?php echo $this->headTitle('ZF2 '. $this->translate('Fashion'))->setSeparator(' - ')->setAutoEscape(false) ?>
 
-        <?php echo $this->headMeta()
-            ->appendName('viewport', 'width=device-width, initial-scale=1.0')
-            ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
-        ?>
+	<?php echo $this->headMeta()
+		->appendName('viewport', 'width=device-width, initial-scale=1.0')
+		->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+	?>
 
-        <!-- Le styles -->
-        <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
-                        ->prependStylesheet($this->basePath() . '/css/style.css')
-                        ->prependStylesheet($this->basePath() . '/css/bootstrap-theme.min.css')
-                        ->prependStylesheet($this->basePath() . '/css/bootstrap.min.css') ?>
+	<!-- Le styles -->
+	<?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/public/img/favicon.ico'))
+					->prependStylesheet($this->basePath() . '/public/css/style.css')
+					?>
 
-        <!-- Scripts -->
-        <?php echo $this->headScript()
-            ->prependFile($this->basePath() . '/js/bootstrap.min.js')
-            ->prependFile($this->basePath() . '/js/jquery.min.js')
-            ->prependFile($this->basePath() . '/js/respond.min.js', 'text/javascript', array('conditional' => 'lt IE 9',))
-            ->prependFile($this->basePath() . '/js/html5shiv.js',   'text/javascript', array('conditional' => 'lt IE 9',))
-        ; ?>
+	<!-- Scripts -->
+	<?php echo $this->headScript()
+		->prependFile($this->basePath() . '/public/js/main-script.js')
+		->prependFile($this->basePath() . '/public/js/respond.min.js', 'text/javascript', array('conditional' => 'lt IE 9',))
+		->prependFile($this->basePath() . '/public/js/html5shiv.js',   'text/javascript', array('conditional' => 'lt IE 9',))
+		->prependFile($this->basePath() . '/public/js/jcarousellite_1.0.1.min.js')
+		->prependFile($this->basePath() . '/public/js/zoomsl-3.0.min.min.js')
+		->prependFile($this->basePath() . '/public/js/jquery-1.8.2.min.js')
+	; ?>
 
-    </head>
-    <body>
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="<?php echo $this->url('home') ?>"><img src="<?php echo $this->basePath('img/zf2-logo.png') ?>" alt="Zend Framework 2"/>&nbsp;<?php echo $this->translate('Skeleton Application') ?></a>
-                </div>
-                <div class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="<?php echo $this->url('home') ?>"><?php echo $this->translate('Home') ?></a></li>
-                    </ul>
-                </div><!--/.nav-collapse -->
-            </div>
-        </nav>
-        <div class="container">
-            <?php echo $this->content; ?>
-            <hr>
-            <footer>
-                <p>&copy; 2005 - <?php echo date('Y') ?> by Zend Technologies Ltd. <?php echo $this->translate('All rights reserved.') ?></p>
-            </footer>
-        </div> <!-- /container -->
-        <?php echo $this->inlineScript() ?>
-    </body>
+</head>
+<body>
+<header>
+	<div class="container_16">
+		<!-- <div class="grid_16 top-nav">
+			<a class="lang" href="#"><img src="../img/vn.png"/></a>
+			<a class="lang" href="#"><img src="../img/uk.png"/></a>
+			<span class="hotline">Hotline:<b>0123 456 789</b></span>
+		</div> -->
+		<div class="grid_4 logo">
+			<a href="<?php echo $this->url('home') ?>"><img src="<?php echo $this->basePath('/public/img/fashion_logo.png') ?>" alt="Fashion Zf2 Logo"/></a>
+		</div>
+		<div class="grid_6 search_box">
+			<input type="text" placeholder="search" />
+		</div>
+		<div class="grid_6 right_col">
+			<div class="account">
+				<a class="signin" href="#">Sign in</a>
+				<a class="signup" href="#">Sign up</a>
+			</div>
+			<div class="cart_box">
+				Cart <b class="quantity">0</b>
+			</div>
+		</div>
+	</div><!--/container_16-->
+</header>
+<div id="main-menu">
+	<div class="container_16">
+		<div class="grid_16">
+			<ul>
+				<li><a href="">Women</a>
+					<ul>
+						<li><a href="">Donec lobortis</a></li>
+						<li><a href="">pulvinar laoreet</a>
+							<ul>
+								<li><a href="">Donec lobortis</a></li>
+								<li><a href="">pulvinar laoreet</a></li>
+								<li><a href=""> Nullam vehicula ligula</a></li>
+								<li><a href="">Vestibulum vel neque</a></li>
+								<li><a href=""> Nullam vehicula ligula</a>
+									<ul>
+										<li><a href="">Donec lobortis</a></li>
+										<li><a href="">pulvinar laoreet</a></li>
+										<li><a href=""> Nullam vehicula ligula</a></li>
+										<li><a href="">Vestibulum vel neque</a></li>
+										<li><a href="">Maecenas felis turpis</a></li>
+										<li><a href="">Suspendisse accumsan</a></li>
+										<li><a href="">Duis quis ullamcorper</a></li>
+										<li><a href="">Nulla varius accumsan nisl</a></li>
+									</ul>
+								</li>
+								<li><a href="">Suspendisse accumsan</a></li>
+								<li><a href="">Duis quis ullamcorper</a></li>
+								<li><a href="">Nulla varius accumsan nisl</a></li>
+							</ul>
+						</li>
+						<li><a href=""> Nullam vehicula ligula</a>
+							<ul>
+								<li><a href="">Donec lobortis</a></li>
+								<li><a href="">pulvinar laoreet</a></li>
+								<li><a href=""> Nullam vehicula ligula</a></li>
+								<li><a href="">Vestibulum vel neque</a></li>
+								<li><a href="">Maecenas felis turpis</a></li>
+								<li><a href="">Suspendisse accumsan</a></li>
+								<li><a href="">Duis quis ullamcorper</a></li>
+								<li><a href="">Nulla varius accumsan nisl</a></li>
+							</ul>
+						</li>
+						<li><a href="">Vestibulum vel neque</a></li>
+						<li><a href="">Maecenas felis turpis</a></li>
+						<li><a href="">Suspendisse accumsan</a></li>
+						<li><a href="">Duis quis ullamcorper</a></li>
+						<li><a href="">Nulla varius accumsan nisl</a></li>
+					</ul>
+				</li>
+				<li><a href="">Men</a>
+					<ul>
+						<li><a href="">Donec lobortis</a></li>
+						<li><a href="">pulvinar laoreet</a>
+							<ul>
+								<li><a href="">Donec lobortis</a></li>
+								<li><a href="">pulvinar laoreet</a></li>
+								<li><a href=""> Nullam vehicula ligula</a></li>
+								<li><a href="">Vestibulum vel neque</a></li>
+								<li><a href=""> Nullam vehicula ligula</a>
+									<ul>
+										<li><a href="">Donec lobortis</a></li>
+										<li><a href="">pulvinar laoreet</a></li>
+										<li><a href=""> Nullam vehicula ligula</a></li>
+										<li><a href="">Vestibulum vel neque</a></li>
+										<li><a href="">Maecenas felis turpis</a></li>
+										<li><a href="">Suspendisse accumsan</a></li>
+										<li><a href="">Duis quis ullamcorper</a></li>
+										<li><a href="">Nulla varius accumsan nisl</a></li>
+									</ul>
+								</li>
+								<li><a href="">Suspendisse accumsan</a></li>
+								<li><a href="">Duis quis ullamcorper</a></li>
+								<li><a href="">Nulla varius accumsan nisl</a></li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+				<li><a href="">Shoes</a></li>
+				<li><a href="">Skirt</a></li>
+			</ul>
+		</div>
+	</div><!--/container_16-->
+</div><!--/main-menu-->
+<div class="container">
+	<div class="container_16">
+		<div class="grid_16">
+			<?php echo $this->content; ?>	
+		</div><!--/grid_16-->
+	</div><!--/container_16-->
+</div> <!-- /container -->
+<footer>
+	<div class="row-1">
+		<div class="container_16">
+			<div class="grid_4 col-1">
+				<h6>Fashion</h6>
+				<ul>
+					<li><a href="">About</a></li>
+					<li><a href="">Contact</a></li>
+					<li><a href="">FAQs</a></li>
+					<li><a href="">Sitemap</a></li>
+				</ul>
+
+				<h6>Follows Us</h6>
+				<a href=""><img src="<?php echo $this->basePath('/public/img/facebook.png') ?>" /></a>
+				<a href=""><img src="<?php echo $this->basePath('/public/img/twitter.png') ?>" /></a>
+				<a href=""><img src="<?php echo $this->basePath('/public/img/googleplus.png') ?>" /></a>
+			</div><!-- col-1 -->
+			<div class="grid_12 col-2">
+				<div class="grid_4 alpha">
+					<h6>Nullam laoreet</h6>
+					<ul>
+						<li><a href="">Maecenas eu</a></li>
+						<li><a href="">Posuere pharetra</a></li>
+						<li><a href="">Phasellus nec</a></li>
+						<li><a href="">Etiam eu tempus</a></li>
+						<li><a href="">Donec aliquet</a></li>
+					</ul>
+				</div>
+				<div class="grid_4">
+					<h6>Nullam laoreet</h6>
+					<ul>
+						<li><a href="">Maecenas eu</a></li>
+						<li><a href="">Posuere pharetra</a></li>
+						<li><a href="">Phasellus nec</a></li>
+						<li><a href="">Etiam eu tempus</a></li>
+						<li><a href="">Donec aliquet</a></li>
+					</ul>
+				</div>
+				<div class="grid_4 omega">
+					<h6>Nullam laoreet</h6>
+					<ul>
+						<li><a href="">Maecenas eu</a></li>
+						<li><a href="">Posuere pharetra</a></li>
+						<li><a href="">Phasellus nec</a></li>
+						<li><a href="">Etiam eu tempus</a></li>
+						<li><a href="">Donec aliquet</a></li>
+					</ul>
+				</div>
+				<div class="grid_4 alpha">
+					<h6>Nullam laoreet</h6>
+					<ul>
+						<li><a href="">Maecenas eu</a></li>
+						<li><a href="">Posuere pharetra</a></li>
+						<li><a href="">Phasellus nec</a></li>
+						<li><a href="">Etiam eu tempus</a></li>
+						<li><a href="">Donec aliquet</a></li>
+					</ul>
+				</div>
+				<div class="grid_4">
+					<h6>Nullam laoreet</h6>
+					<ul>
+						<li><a href="">Maecenas eu</a></li>
+						<li><a href="">Posuere pharetra</a></li>
+						<li><a href="">Phasellus nec</a></li>
+						<li><a href="">Etiam eu tempus</a></li>
+						<li><a href="">Donec aliquet</a></li>
+					</ul>
+				</div>
+				<div class="grid_4 omega">
+					<h6>Nullam laoreet</h6>
+					<ul>
+						<li><a href="">Maecenas eu</a></li>
+						<li><a href="">Posuere pharetra</a></li>
+						<li><a href="">Phasellus nec</a></li>
+						<li><a href="">Etiam eu tempus</a></li>
+						<li><a href="">Donec aliquet</a></li>
+					</ul>
+				</div>
+			</div><!-- col-2 -->
+		</div><!--/container_16-->
+	</div><!--/row-1-->
+	<div class="row-2">
+		<div class="container_16">
+			<div class="grid_16 copyright">
+				<a class="logo" href=""><img src="<?php echo $this->basePath('/public/img/fashion_logo.png') ?>"/></a>
+				<span>© Copyright 2014 Fashion.vn, All rights reserved</span>
+			</div>
+		</div>
+	</div><!--/row-2-->
+</footer>
+<?php echo $this->inlineScript() ?>
+</body>
 </html>
