@@ -261,6 +261,19 @@ header .account .signup{
 	line-height: 36px;
 	background-color: #f9f9f9;
 	border-bottom: 1px solid #dbd8d8;
+	position: relative;
+}
+
+.cat-block .block-title .more_cats{
+	display: block;
+	width: 30px; height: 30px;
+	background: url(../img/more_cats.png) no-repeat center;
+	position: absolute;
+	top: 2px; right: 5px;
+}
+
+.cat-block .block-title .more_cats:hover{
+	box-shadow: 2px 2px 5px #e6e5e5;
 }
 
 .cat-block .block-title h3{
@@ -269,11 +282,19 @@ header .account .signup{
 	line-height: 36px;
 	padding-left: 20px;
 	text-transform: uppercase;
+	overflow: hidden;
 }
 
 .cat-block .cat-menu{
 	display: inline-block;
+	width: 712px; height: 36px;
+	overflow: hidden;
 }
+
+.cat-block .cat-menu ul{
+
+}
+
 .cat-block .cat-menu ul li{
 	display: inline-block;
 	margin: 0 10px;
