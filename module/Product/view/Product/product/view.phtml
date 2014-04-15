@@ -1,0 +1,278 @@
+<div class="grid_12 alpha">
+	<div id="product-detail" class="clearfix">
+		<div class="product-image">
+			<div class="big-image">
+				<img class = "imagezoom" src="<?php echo $this->basepath('/public/img/hinh_san_pham/').$product->image; ?>" data-large="<?php echo $this->basepath('/public/img/hinh_san_pham/').$product->image; ?>"/>
+				<div class="zoomarea"></div>
+			</div>
+			<div class="gallery-thumbs">
+				<div class="jCarouselLite">
+					<ul>
+						<li><img class="thumb" src="<?php echo $this->basepath('/public/img/hinh_san_pham/').$product->image; ?>" data-large="<?php echo $this->basepath('/public/img/hinh_san_pham/').$product->image; ?>" /></li>
+					</ul>
+				</div>
+				<div class="scroll_left"></div>
+				<div class="scroll_right"></div>
+			</div>
+			<?php if(!empty($product->sales)):?>
+			<div class="discount">
+				<span>-31%</span>
+			</div>
+			<?php endif;?>
+		</div><!-- product-image -->
+		<div class="summary">
+			<h3 class="name"><?php echo $product->product_name;?></h3>
+			<p class="price">
+				<span class="current-price"><?php echo number_format($product->price,0,",",".");?> &#8363;</span>
+				<span class="old-price"><!--Old price: 260.000 &#8363; --></span>
+			</p>
+			<div class="control">
+				<div class="quantity-container">
+					<input type="text" id="purchase_quantity" class="p-quantity" value="1" />
+					<ul class="btn-container">
+						<li><button type="button" class="up"></button></li>
+						<li><button type="button" class="down"></button></li>
+					</ul>
+				</div>
+				<button class="btn-buy-now">Buy now</button>
+				<button class="btn-add-to-cart">Add to cart</button>
+			</div>
+			<ul class="varius">
+				<li class="store-status">In Stock</li>
+				<li class="tags"> Tags: 
+					<a href="">Abc</a>
+					<a href="">Def</a>
+					<a href="">Xyz</a>
+				</li>
+				<li class="like">123 views | 12 likes <a class="btn-like" href="">Like</a></li>
+			</ul>
+		</div>
+		<div class="clear">></div>
+		<div class="detail">
+			<h4 class="h">PRODUCT INFO</h4>
+			<?php echo $product->info; ?>
+		</div>
+	</div><!--/product-detail-->
+</div><!--/grid_12 -->
+
+<div class="grid_4 omega">
+	<div class="cart-preview">
+		<div class="header"><a href="">Cart <span class="price cart-total">510.000 &#8363;</span></a></div>
+		<ul>
+			<li class="item" id="p_123">
+				<a class="illus" href="">
+					<img src="<?php echo $this->basepath('/public/img/');?>no.jpg"/>
+				</a>
+				<a class="name" href="">Suspendisse a ante</a>
+				<p class="price current-price">160.000 &#8363;</p>
+				<p class="price old-price">190.000 &#8363;</p>
+				<p class="qty">x<b>1</b></p>
+			</li>
+
+			<li class="item" id="p_124">
+				<a class="illus" href="">
+					<img src="<?php echo $this->basepath('/public/img/');?>no.jpg"/>
+				</a>
+				<a class="name" href="">Vivamus gravida</a>
+				<p class="price current-price">200.000 &#8363;</p>
+				<p class="price old-price">350.000 &#8363;</p>
+				<p class="qty">x<b>2</b></p>
+			</li>
+
+			<li class="item" id="p_125">
+				<a class="illus" href="">
+					<img src="<?php echo $this->basepath('/public/img/');?>no.jpg"/>
+				</a>
+				<a class="name" href="">Vestibulum accumsan magna</a>
+				<p class="price current-price">150.000 &#8363;</p>
+				<p class="qty">x<b>1</b></p>
+			</li>
+
+			<li class="item" id="p_126">
+				<a class="illus" href="">
+					<img src="<?php echo $this->basepath('/public/img/');?>no.jpg"/>
+				</a>
+				<a class="name" href="">Suspendisse a ante</a>
+				<p class="price current-price">160.000 &#8363;</p>
+				<p class="price old-price">190.000 &#8363;</p>
+				<p class="qty">x<b>1</b></p>
+			</li>
+
+			<li class="item" id="p_127">
+				<a class="illus" href="">
+					<img src="<?php echo $this->basepath('/public/img/');?>no.jpg"/>
+				</a>
+				<a class="name" href="">Vivamus gravida</a>
+				<p class="price current-price">200.000 &#8363;</p>
+				<p class="price old-price">350.000 &#8363;</p>
+				<p class="qty">x<b>1</b></p>
+			</li>
+
+			<li class="item" id="p_128">
+				<a class="illus" href="">
+					<img src="<?php echo $this->basepath('/public/img/');?>no.jpg"/>
+				</a>
+				<a class="name" href="">Vestibulum accumsan magna</a>
+				<p class="price current-price">150.000 &#8363;</p>
+				<p class="qty">x<b>1</b></p>
+			</li>
+		</ul>
+
+	</div><!--/cart-preview-->
+</div><!--/grid_4 -->
+<div class="clear"></div>
+
+<div class="cat-block">
+	<div class="block-title">
+		<h3>Women</h3>
+		<div class="cat-menu">
+			<ul>
+				<li><a href="">Donec lobortis</a></li>
+				<li><a href="">pulvinar laoreet</a></li>
+				<li><a href="">Nullam vehicula ligula</a></li>
+				<li><a href="">Vestibulum vel neque</a></li>
+				<li><a href="">Maecenas felis turpis</a></li>
+			</ul>
+		</div>
+	</div><!--block-title-->
+
+	<div class="cat-products">
+		<div class="product-item row-first">
+			<a class="product-img" href="">
+				<img src="<?php echo $this->basepath('/public/img/');?>no.jpg"/>
+			</a>
+			<a class="product-name" href="">Vivamus dui risus</a>
+			<div class="product-price">
+				<span class="price">160.000 &#8363;</span>
+			</div>
+		</div><!--/product-item row-first-->
+		<div class="product-item">
+			<a class="product-img" href="">
+				<img src="<?php echo $this->basepath('/public/img/');?>no.jpg"/>
+			</a>
+			<a class="product-name" href="">Vivamus dui risus</a>
+			<div class="product-price">
+				<span class="price">160.000 &#8363;</span>
+			</div>
+		</div><!--/product-item -->
+		<div class="product-item">
+			<a class="product-img" href="">
+				<img src="<?php echo $this->basepath('/public/img/');?>no.jpg"/>
+			</a>
+			<a class="product-name" href="">Vivamus dui risus</a>
+			<div class="product-price">
+				<span class="price">160.000 &#8363;</span>
+			</div>
+		</div><!--/product-item -->
+		<div class="product-item">
+			<a class="product-img" href="">
+				<img src="<?php echo $this->basepath('/public/img/');?>no.jpg"/>
+			</a>
+			<a class="product-name" href="">Vivamus dui risus</a>
+			<div class="product-price">
+				<span class="price">160.000 &#8363;</span>
+			</div>
+		</div><!--/product-item -->
+		<div class="product-item row-first">
+			<a class="product-img" href="">
+				<img src="<?php echo $this->basepath('/public/img/');?>no.jpg"/>
+			</a>
+			<a class="product-name" href="">Vivamus dui risus</a>
+			<div class="product-price">
+				<span class="price">160.000 &#8363;</span>
+			</div>
+		</div><!--/product-item row-first-->
+		<div class="product-item">
+			<a class="product-img" href="">
+				<img src="<?php echo $this->basepath('/public/img/');?>no.jpg"/>
+			</a>
+			<a class="product-name" href="">Vivamus dui risus</a>
+			<div class="product-price">
+				<span class="price">160.000 &#8363;</span>
+			</div>
+		</div><!--/product-item -->
+		<div class="product-item">
+			<a class="product-img" href="">
+				<img src="<?php echo $this->basepath('/public/img/');?>no.jpg"/>
+			</a>
+			<a class="product-name" href="">Vivamus dui risus</a>
+			<div class="product-price">
+				<span class="price">160.000 &#8363;</span>
+			</div>
+		</div><!--/product-item -->
+		<div class="product-item">
+			<a class="product-img" href="">
+				<img src="<?php echo $this->basepath('/public/img/');?>no.jpg"/>
+			</a>
+			<a class="product-name" href="">Vivamus dui risus</a>
+			<div class="product-price">
+				<span class="price">160.000 &#8363;</span>
+			</div>
+		</div><!--/product-item -->
+		<div class="clear"></div>
+	</div><!--/cat-products-->
+</div><!--/cat-block-->
+
+<div class="cat-block justview">
+	<div class="block-title">
+		<h3>Just View</h3>
+	</div><!--block-title-->
+
+	<div class="scroll_list">
+		<ul>
+			<li>
+				<a href="">
+					<img src="<?php echo $this->basepath('/public/img/');?>no.jpg"/>
+				</a>
+			</li>
+			<li>
+				<a href="">
+					<img src="<?php echo $this->basepath('/public/img/');?>no.jpg"/>
+				</a>
+			</li>
+			<li>
+				<a href="">
+					<img src="<?php echo $this->basepath('/public/img/');?>no.jpg"/>
+				</a>
+			</li>
+			<li>
+				<a href="">
+					<img src="<?php echo $this->basepath('/public/img/');?>no.jpg"/>
+				</a>
+			</li>
+			<li>
+				<a href="">
+					<img src="<?php echo $this->basepath('/public/img/');?>no.jpg"/>
+				</a>
+			</li>
+			<li>
+				<a href="">
+					<img src="<?php echo $this->basepath('/public/img/');?>no.jpg"/>
+				</a>
+			</li>
+			<li>
+				<a href="">
+					<img src="<?php echo $this->basepath('/public/img/');?>no.jpg"/>
+				</a>
+			</li>
+			<li>
+				<a href="">
+					<img src="<?php echo $this->basepath('/public/img/');?>no.jpg"/>
+				</a>
+			</li>
+			<li>
+				<a href="">
+					<img src="<?php echo $this->basepath('/public/img/');?>no.jpg"/>
+				</a>
+			</li>
+			<li>
+				<a href="">
+					<img src="<?php echo $this->basepath('/public/img/');?>no.jpg"/>
+				</a>
+			</li>
+		</ul>
+		<div class="scroll_left"></div>
+		<div class="scroll_right"></div>
+		<div class="clear"></div>
+	</div><!--/cat-products-->
+</div><!--/cat-block-->
