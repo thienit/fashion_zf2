@@ -192,7 +192,7 @@ header .account .signup{
 	display: block;
 	padding: 10px 20px;
 	color: #4f4c4c;
-	font-size: 18px;
+	font-size: 17px;
 }
 #main-menu ul li a:hover{
 	color: #8a8989;
@@ -230,7 +230,7 @@ header .account .signup{
 }
 
 #main-menu li .expand{
-	color: #373636 !important;
+	color: #373636 ;
 }
 
 #main-menu li .expand_marker{
