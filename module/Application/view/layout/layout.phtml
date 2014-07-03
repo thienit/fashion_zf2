@@ -51,85 +51,16 @@
 		</div>
 	</div><!--/container_16-->
 </header>
+
 <div id="main-menu">
 	<div class="container_16">
 		<div class="grid_16">
 			<ul>
-				<li><a href="">Women</a>
-					<ul>
-						<li><a href="">Donec lobortis</a></li>
-						<li><a href="">pulvinar laoreet</a>
-							<ul>
-								<li><a href="">Donec lobortis</a></li>
-								<li><a href="">pulvinar laoreet</a></li>
-								<li><a href=""> Nullam vehicula ligula</a></li>
-								<li><a href="">Vestibulum vel neque</a></li>
-								<li><a href=""> Nullam vehicula ligula</a>
-									<ul>
-										<li><a href="">Donec lobortis</a></li>
-										<li><a href="">pulvinar laoreet</a></li>
-										<li><a href=""> Nullam vehicula ligula</a></li>
-										<li><a href="">Vestibulum vel neque</a></li>
-										<li><a href="">Maecenas felis turpis</a></li>
-										<li><a href="">Suspendisse accumsan</a></li>
-										<li><a href="">Duis quis ullamcorper</a></li>
-										<li><a href="">Nulla varius accumsan nisl</a></li>
-									</ul>
-								</li>
-								<li><a href="">Suspendisse accumsan</a></li>
-								<li><a href="">Duis quis ullamcorper</a></li>
-								<li><a href="">Nulla varius accumsan nisl</a></li>
-							</ul>
-						</li>
-						<li><a href=""> Nullam vehicula ligula</a>
-							<ul>
-								<li><a href="">Donec lobortis</a></li>
-								<li><a href="">pulvinar laoreet</a></li>
-								<li><a href=""> Nullam vehicula ligula</a></li>
-								<li><a href="">Vestibulum vel neque</a></li>
-								<li><a href="">Maecenas felis turpis</a></li>
-								<li><a href="">Suspendisse accumsan</a></li>
-								<li><a href="">Duis quis ullamcorper</a></li>
-								<li><a href="">Nulla varius accumsan nisl</a></li>
-							</ul>
-						</li>
-						<li><a href="">Vestibulum vel neque</a></li>
-						<li><a href="">Maecenas felis turpis</a></li>
-						<li><a href="">Suspendisse accumsan</a></li>
-						<li><a href="">Duis quis ullamcorper</a></li>
-						<li><a href="">Nulla varius accumsan nisl</a></li>
-					</ul>
-				</li>
-				<li><a href="">Men</a>
-					<ul>
-						<li><a href="">Donec lobortis</a></li>
-						<li><a href="">pulvinar laoreet</a>
-							<ul>
-								<li><a href="">Donec lobortis</a></li>
-								<li><a href="">pulvinar laoreet</a></li>
-								<li><a href=""> Nullam vehicula ligula</a></li>
-								<li><a href="">Vestibulum vel neque</a></li>
-								<li><a href=""> Nullam vehicula ligula</a>
-									<ul>
-										<li><a href="">Donec lobortis</a></li>
-										<li><a href="">pulvinar laoreet</a></li>
-										<li><a href=""> Nullam vehicula ligula</a></li>
-										<li><a href="">Vestibulum vel neque</a></li>
-										<li><a href="">Maecenas felis turpis</a></li>
-										<li><a href="">Suspendisse accumsan</a></li>
-										<li><a href="">Duis quis ullamcorper</a></li>
-										<li><a href="">Nulla varius accumsan nisl</a></li>
-									</ul>
-								</li>
-								<li><a href="">Suspendisse accumsan</a></li>
-								<li><a href="">Duis quis ullamcorper</a></li>
-								<li><a href="">Nulla varius accumsan nisl</a></li>
-							</ul>
-						</li>
-					</ul>
-				</li>
-				<li><a href="">Shoes</a></li>
-				<li><a href="">Skirt</a></li>
+			<?php
+				foreach($this->subjects as $sbj):
+			?>
+				<li><a href="<?php echo $this->url('products_in_subject',array('subject_id' => $sbj->subject_id));?>"><?php echo $sbj->subject_name;?></a></li>
+			<?php endforeach;?>
 			</ul>
 		</div>
 	</div><!--/container_16-->

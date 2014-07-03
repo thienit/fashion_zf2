@@ -1,0 +1,7 @@
+<?php
+	foreach($productGroups as $pg):
+?>
+<p><a href="<?php echo $this->url('products_in_group',array('group_id'=>$pg->group_id));?>"><?php echo $pg->group_name;?></a></p>
+<?php
+	endforeach;
+?>

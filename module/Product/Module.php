@@ -7,6 +7,10 @@ use Zend\Db\ResultSet\ResultSet;
 use Zend\Db\TableGateway\TableGateway;
 use Product\Model\Product;
 use Product\Model\ProductTable;
+use Product\Model\ProductGroup;
+use Product\Model\ProductGroupTable;
+use Product\Model\Subject;
+use Product\Model\SubjectTable;
 
 class Module{
 	
@@ -37,6 +41,30 @@ class Module{
 							$resultSetPrototype = new ResultSet();
 							$resultSetPrototype->setArrayObjectPrototype(new Product());
 							return new TableGateway('product', $dbAdapter, null, $resultSetPrototype);
+						},
+						
+						'Product\Model\ProductGroupTable' => function($sm) {
+							$tableGateway = $sm->get('ProductGroupTableGateway');
+							$table = new ProductGroupTable($tableGateway);
+							return $table;
+						},
+						'ProductGroupTableGateway' => function($sm) {
+							$dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
+							$resultSetPrototype = new ResultSet();
+							$resultSetPrototype->setArrayObjectPrototype(new ProductGroup());
+							return new TableGateway('product_groups',$dbAdapter, null, $resultSetPrototype);
+						},
+						
+						'Product\Model\SubjectTable' => function($sm) {
+							$tableGateway = $sm->get('SubjectTableGateway');
+							$table = new SubjectTable($tableGateway);
+							return $table;
+						},
+						'SubjectTableGateway' => function($sm) {
+							$dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
+							$resultSetPrototype = new ResultSet();
+							$resultSetPrototype->setArrayObjectPrototype(new Subject());
+							return new TableGateway('subject',$dbAdapter, null, $resultSetPrototype);
 						},
 				)
 		);

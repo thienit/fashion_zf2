@@ -1,0 +1,50 @@
+﻿<script>
+	var initialLocation;
+var siberia = new google.maps.LatLng(60, 105);
+var newyork = new google.maps.LatLng(40.69847032728747, -73.9514422416687);
+var browserSupportFlag =  new Boolean();
+
+function initialize() {
+  var myOptions = {
+    zoom: 6,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  };
+  var map = new google.maps.Map(document.getElementById("map-canvas"), myOptions);
+
+  // Try W3C Geolocation (Preferred)
+  if(navigator.geolocation) {
+    browserSupportFlag = true;
+    navigator.geolocation.getCurrentPosition(function(position) {
+      initialLocation = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+      map.setCenter(initialLocation);
+    }, function() {
+      handleNoGeolocation(browserSupportFlag);
+    });
+  }
+  // Browser doesn't support Geolocation
+  else {
+    browserSupportFlag = false;
+    handleNoGeolocation(browserSupportFlag);
+  }
+
+  function handleNoGeolocation(errorFlag) {
+    if (errorFlag == true) {
+      alert("Geolocation service failed.");
+      initialLocation = newyork;
+    } else {
+      alert("Your browser doesn't support geolocation. We've placed you in Siberia.");
+      initialLocation = siberia;
+    }
+    map.setCenter(initialLocation);
+  }
+}
+</script>
+<p>&nbsp;</p>
+<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d250916.98837582697!2d106.65970479997611!3d10.689831553103168!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1404370927261" width="600" height="450" frameborder="0" style="border:0"></iframe>
+
+<form action="http://maps.google.com/maps" method="get" target="_blank">
+   <label for="saddr">Enter your location</label>
+   <input type="text" name="saddr" value="SDV Viet Nam Co., Ltd., 364, Ho Chi Minh City, Ho Chi Minh, Vietnam" />
+   <input type="hidden" name="daddr" value="Ngã tư Hàng Xanh, Ho Chi Minh City, Vietnam" />
+   <input type="submit" value="Get directions" />
+</form>

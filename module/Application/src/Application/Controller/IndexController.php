@@ -14,8 +14,33 @@ use Zend\View\Model\ViewModel;
 
 class IndexController extends AbstractActionController
 {
+	protected $subjectTable;
+	protected $productTable;
+	
+	public function getSubjectTable()
+	{
+		if(!$this->subjectTable){
+			$sm = $this->getServiceLocator();
+			$this->subjectTable = $sm->get('Product\Model\SubjectTable');
+		}
+		return $this->subjectTable;
+	}
+	
+	public function getProductTable()
+	{
+		if(!$this->productTable){
+			$sm = $this->getServiceLocator();
+			$this->productTable = $sm->get('Product\Model\ProductTable');
+		}
+		return $this->productTable;
+	}
+	
     public function indexAction()
     {
-        return new ViewModel();
+		$subjects = $this->getSubjectTable()->fetchAll();
+		$this->layout()->subjects = $subjects;
+        return new ViewModel(array('subjects' => $subjects));
     }
+	
+	
 }

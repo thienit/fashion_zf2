@@ -17,15 +17,27 @@ class ProductTable extends TableGateway
 		return $resultSet;
 	}
 	
-	public function getProduct($productId)
+	public function getSingle($productId)
 	{
-		$rowset = $this->tableGateway->select(array('product_id' => $productId));
-		$row = $rowset->current();
+		$resultSet = $this->tableGateway->select(array('product_id' => $productId));
+		$row = $resultSet->current();
 		if (!$row) 
 		{
 			throw new \Exception("Could not find now $productId");
 		}
 		return $row;
+	}
+	
+	public function getProductsInGroup($groupId)
+	{
+		$resultSet = $this->tableGateway->select(array('group_id' => $groupId));
+		return $resultSet;
+	}
+	
+	public function getProductsInSubject($subjectId)
+	{
+		$resultSet = $this->tableGateway->select(array('subject_id' => $subjectId));
+		return $resultSet;
 	}
 }
 
