@@ -1,50 +1,155 @@
-﻿<script>
-	var initialLocation;
-var siberia = new google.maps.LatLng(60, 105);
-var newyork = new google.maps.LatLng(40.69847032728747, -73.9514422416687);
-var browserSupportFlag =  new Boolean();
-
+﻿<style>
+      html, body, #map-canvas {
+        height: 700px;
+        margin: 0px;
+        padding: 0px
+      }
+    </style>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+<script>
+var directionsDisplay;
+var directionsService = new google.maps.DirectionsService();
+var map;
+var curPos;
+var customerMarker = null;
+var fromLat, fromLng;
 function initialize() {
-  var myOptions = {
-    zoom: 6,
-    mapTypeId: google.maps.MapTypeId.ROADMAP
-  };
-  var map = new google.maps.Map(document.getElementById("map-canvas"), myOptions);
+	directionsDisplay = new google.maps.DirectionsRenderer();
+	var mapOptions = {
+		zoom: 6
+	};
+	map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+	directionsDisplay.setMap(map);
+	setMarkers(map, locations);
+	// Try HTML5 geolocation
+	if(navigator.geolocation) {
+		navigator.geolocation.getCurrentPosition(function(position) {
+		curPos = new google.maps.LatLng(position.coords.latitude,
+									   position.coords.longitude);
 
-  // Try W3C Geolocation (Preferred)
-  if(navigator.geolocation) {
-    browserSupportFlag = true;
-    navigator.geolocation.getCurrentPosition(function(position) {
-      initialLocation = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
-      map.setCenter(initialLocation);
-    }, function() {
-      handleNoGeolocation(browserSupportFlag);
-    });
-  }
-  // Browser doesn't support Geolocation
-  else {
-    browserSupportFlag = false;
-    handleNoGeolocation(browserSupportFlag);
-  }
+		var infowindow = new google.maps.InfoWindow({
+			map: map,
+			position: curPos,
+			content: 'I\'m here'
+		});
 
-  function handleNoGeolocation(errorFlag) {
-    if (errorFlag == true) {
-      alert("Geolocation service failed.");
-      initialLocation = newyork;
-    } else {
-      alert("Your browser doesn't support geolocation. We've placed you in Siberia.");
-      initialLocation = siberia;
-    }
-    map.setCenter(initialLocation);
-  }
+		map.setCenter(curPos);
+		
+		setStartPosition(position.coords.latitude, position.coords.longitude);
+	}, function() {
+		handleNoGeolocation(true);
+	});
+	} else {
+		// Browser doesn't support Geolocation
+		handleNoGeolocation(false);
+	}
+	
+	google.maps.event.addListener(map, 'click', function(e) {
+		placeMarker(map, e.latLng);
+	});
+	
+	// Input data
+	var eEnd = document.getElementById('daddr');
+	for( var i = 0; i < locations.length; i++) {
+		var option = document.createElement("option");
+		option.text = locations[i][0];
+		option.value = locations[i][1];
+		eEnd.add(option,eEnd[i]);
+	}
 }
+
+function handleNoGeolocation(errorFlag) {
+	if (errorFlag) {
+		var content = 'Error: The Geolocation service failed.';
+	} else {
+		var content = 'Error: Your browser doesn\'t support geolocation.';
+	}
+
+	var options = {
+		map: map,
+		position: new google.maps.LatLng(60, 105),
+		content: content
+	};
+
+	var infowindow = new google.maps.InfoWindow(options);
+	map.setCenter(options.position);
+}
+
+function calcRoute() {
+	// var start = document.getElementById('start').value;
+	// var end = document.getElementById('end').value;
+	var eEnd = document.getElementById('daddr');
+	var endPos = new google.maps.LatLng(locations[eEnd.selectedIndex][1],
+									   locations[eEnd.selectedIndex][2]);
+	
+	var origin = new google.maps.LatLng(fromLat, fromLng);
+	var request = {
+		origin:origin,
+		destination:endPos,
+		travelMode: google.maps.TravelMode.DRIVING
+	};
+	directionsService.route(request, function(response, status) {
+		if (status == google.maps.DirectionsStatus.OK) {
+			directionsDisplay.setDirections(response);
+		}
+	});
+}
+
+var locations = [
+	['Hà Nội',21.036544,105.83489],
+	['Đà Nẵng',16.061223, 108.227948],
+	['Sài Gòn',10.7719428,106.6982421]
+];
+
+var iconMarker = '<?php echo $this->basepath("/public/img/ntw.png");?>';
+
+function setMarkers(map, locations) {
+	// Add markers to the map
+	for (var i = 0; i < locations.length; i++) {
+		var place = locations[i];
+		var myLatLng = new google.maps.LatLng(place[1], place[2]);
+		var marker = new google.maps.Marker({
+			position: myLatLng,
+			map: map,
+			title: place[0],
+			icon: iconMarker
+		});
+	}
+}
+
+function placeMarker(map, position) {
+	if(customerMarker)
+		customerMarker.setMap(null);
+		
+	customerMarker = new google.maps.Marker({
+		position: position,
+		map: map,
+	});
+	setStartPosition(position.lat(), position.lng());
+	calcRoute();
+}
+
+function setStartPosition(posLat, posLng) {
+	var eSaddr = document.getElementById('saddr');
+	eSaddr.value = posLat + "," + posLng;
+	fromLat = posLat;
+	fromLng = posLng;
+}
+google.maps.event.addDomListener(window, 'load', initialize);
 </script>
 <p>&nbsp;</p>
-<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d250916.98837582697!2d106.65970479997611!3d10.689831553103168!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1404370927261" width="600" height="450" frameborder="0" style="border:0"></iframe>
+<div id="map-canvas"></div>
 
 <form action="http://maps.google.com/maps" method="get" target="_blank">
-   <label for="saddr">Enter your location</label>
-   <input type="text" name="saddr" value="SDV Viet Nam Co., Ltd., 364, Ho Chi Minh City, Ho Chi Minh, Vietnam" />
-   <input type="hidden" name="daddr" value="Ngã tư Hàng Xanh, Ho Chi Minh City, Vietnam" />
-   <input type="submit" value="Get directions" />
+	<p>
+		<label for="saddr">From</label>
+		<input type="text" name="saddr" id="saddr"/>
+	</p>
+	<p>
+		<label for="saddr">To</label>
+		<select name="daddr" id="daddr"></select>
+	</p>
+	<p>
+		<input type="button" onClick="calcRoute();" value="Show directions" />
+	</p>
 </form>
